@@ -1,0 +1,12 @@
+1.initialize a project with npm
+2.install express
+3.setting up parsers for form 
+4.setting up ejs for ejs pages 
+    insall ejs
+    setup ejs as  view engine
+5.setting up public static files 
+
+
+6.dynamic routing
+    dynamic routing
+    how to get data coming from frontend at backend route
