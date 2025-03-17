@@ -5,7 +5,11 @@
     insall ejs
     setup ejs as  view engine
 5.setting up public static files 
-
+app.use(express.static(path.join(__dirname,'public'))) 
+__dirname hamain system sy full bath provide krta ha hamary project k folder tak
+lahaza isi path me ham public filder ko attach krty hain or osy express.static me bajty hain means k btaty hain k har request ka static/frontend public folder me dondo
+lahaza.............
+app.use(express.static(ya hamara public folder tak ka path))
 
 6.dynamic routing
     dynamic routing
