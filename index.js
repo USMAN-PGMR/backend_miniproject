@@ -18,9 +18,17 @@ app.use(express.static(path.join(__dirname,'public')))   // __direname overall p
 //     res.send('working fine ')
 // })
 // oper normal routes thy jo brower pr show hoty thy lkn ab ejs waly routes 
-// set ejs 
+// -----------set ejs 
 app.get("/",function(req,res){
     res.render('index')     // is me ham render karain gy or views folder k pages ko use karain gy 
+})
+// *********dynamic routes *********
+app.get("/profile/:username",function(req,res){
+    //(req.params.username) // ya params dynamically part k data ko dakhy ga 
+    res.send(`Welcome, ${req.params.username}`)      
+})
+app.get("/auther/:username/:age",function(req,res){ 
+    res.send(`Welcome, ${req.params.username} of age ${req.params.age} `)      
 })
 
 

@@ -12,5 +12,6 @@ lahaza.............
 app.use(express.static(ya hamara public folder tak ka path))
 
 6.dynamic routing
-    dynamic routing
-    how to get data coming from frontend at backend route
+    1.dynamic routing(jis part ko dynamically bnana os k sath : laga do like /profile/:username)
+    (req.params.username) req.params me dynamically part wala data ay ga 
+    2.how to get data coming from frontend at backend route
