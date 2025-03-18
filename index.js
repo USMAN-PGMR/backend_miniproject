@@ -27,7 +27,7 @@ app.get("/",function(req,res){
 
     })
 })
-// post methos 
+// post methos at /create notes
 app.post("/create", function (req, res) {
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`, req.body.description, function (err) {
         if (err) {
@@ -35,6 +35,35 @@ app.post("/create", function (req, res) {
             return res.status(500).send("Error saving the file");
         }
         console.log("File saved successfully");
+        res.redirect("/");
+    });
+});
+// ---------------edit notes /edit
+
+// Handle form submission for editing notes
+app.post("/edit", function (req, res) {
+    const oldTitle = req.body.title; // Original title
+    const newTitle = req.body.updatetitle; // New title
+    const newDescription = req.body.updatedescription; // New description
+
+    // Rename the file if the title is updated
+    if (oldTitle !== newTitle) {
+        fs.rename(`./files/${oldTitle}`, `./files/${newTitle}`, function (err) {
+            if (err) {
+                console.error("Error renaming the file:", err);
+                return res.status(500).send("Error renaming the file");
+            }
+            console.log("File renamed successfully");
+        });
+    }
+
+    // Update the file content with the new description
+    fs.writeFile(`./files/${newTitle || oldTitle}`, newDescription, function (err) {
+        if (err) {
+            console.error("Error updating the file content:", err);
+            return res.status(500).send("Error updating the file content");
+        }
+        console.log("File content updated successfully");
         res.redirect("/");
     });
 });
@@ -48,6 +77,13 @@ app.get("/file/:filename",function(req,res){
     fs.readFile(`./files/${req.params.filename}`,"utf-8",function(err,filedata){
         // res.render('index')     // is me ham render karain gy or views folder k pages ko use karain gy 
         res.render('show',{filename:req.params.filename,filedata:filedata})      
+
+    }) 
+})
+app.get("/edit/:filename",function(req,res){
+    fs.readFile(`./files/${req.params.filename}`,"utf-8",function(err,filedata){
+        // res.render('index')     // is me ham render karain gy or views folder k pages ko use karain gy 
+        res.render('edit',{filename:req.params.filename,filedata:filedata})      
 
     }) 
 })
