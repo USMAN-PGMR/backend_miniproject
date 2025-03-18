@@ -1,3 +1,3 @@
-alert(
-    'welcom'
-);
+// alert(
+//     'welcom'
+// );
