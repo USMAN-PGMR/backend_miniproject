@@ -32,11 +32,11 @@
                 <% files.forEach(function (val){%>      <!--then apply the forEach -->
                     <div class="col-12 col-md-6 col-lg-4">
 
-                        <div class="card">
+                        <div class="card my-2">
                             <div class="card-body">
                                 <h4 class="card-title"><%= val %></h4>
                                 
-                                <button class="btn btn-link">Read More</button>
+                                <a class="btn btn-link"  href="/file/<%=val%>" >Read More</a>
                             </div>
                         </div>
                     </div>

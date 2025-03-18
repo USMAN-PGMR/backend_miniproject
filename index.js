@@ -43,6 +43,15 @@ app.get("/profile/:username",function(req,res){
     //(req.params.username) // ya params dynamically part k data ko dakhy ga 
     res.send(`Welcome, ${req.params.username}`)      
 })
+// -----read more k leay
+app.get("/file/:filename",function(req,res){
+    fs.readFile(`./files/${req.params.filename}`,"utf-8",function(err,filedata){
+        // res.render('index')     // is me ham render karain gy or views folder k pages ko use karain gy 
+        res.render('show',{filename:req.params.filename,filedata:filedata})      
+
+    }) 
+})
+
 app.get("/auther/:username/:age",function(req,res){ 
     res.send(`Welcome, ${req.params.username} of age ${req.params.age} `)      
 })
